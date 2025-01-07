@@ -17,6 +17,7 @@ router.post("/add", async (req, res) => {
   res.status(201).json({ message: "Book added successfully", data });
 });
 
+
 router.get("/", async (req, res) => {
     const { data, error } = await supabase.from("books").select("*");
   

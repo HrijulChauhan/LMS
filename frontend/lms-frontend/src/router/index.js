@@ -11,7 +11,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/add-book",
+    path: "/addbook",
     name: "AddBookForm",
     component: AddBookForm,
   },
