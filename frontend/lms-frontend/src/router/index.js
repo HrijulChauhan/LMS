@@ -3,7 +3,6 @@ import Home from "../components/Home.vue";
 import AddBookForm from "../components/AddBookForm.vue";
 import BookList from "../components/BookList.vue";
 
-// Define routes
 const routes = [
   {
     path: "/",
@@ -22,7 +21,6 @@ const routes = [
   },
 ];
 
-// Create router instance
 const router = createRouter({
   history: createWebHistory(),
   routes,

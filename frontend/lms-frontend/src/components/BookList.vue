@@ -1,14 +1,11 @@
 <template>
   <nav class="relative flex items-center px-10 py-5">
-    <!-- Left Component: Logo -->
     <router-link to="/" class="flex-shrink-0">
       <h1 class="text-lg text-gray-600 tracking-tighter font-medium">LMS</h1>
     </router-link>
 
-    <!-- Center Component: Book Search -->
     <h1 class="absolute left-1/2 transform -translate-x-1/2 text-2xl tracking-tight font-medium text-gray-800">Book Search</h1>
 
-    <!-- Right Component: Navigation Links -->
     <section class="ml-auto flex space-x-6 text-base">
       <router-link to="/">
         <div>Home</div>
@@ -23,7 +20,6 @@
   </nav>
 
   <div class="p-10">
-    <!-- Search Filter -->
     <div class="mb-6 flex justify-end">
       <input
         v-model="searchQuery"
@@ -33,7 +29,6 @@
       />
     </div>
 
-    <!-- Books Grid -->
     <div class="grid grid-cols-6 gap-4">
       <div
         v-for="(book, index) in filteredBooks"
@@ -64,7 +59,6 @@ const books = ref([]);
 const searchQuery = ref("");
 const error = ref("");
 
-// Fetch books from the API
 const fetchBooks = async () => {
   try {
     const response = await axios.get("http://localhost:5000/api/books");
@@ -74,11 +68,9 @@ const fetchBooks = async () => {
   }
 };
 
-// Computed property for filtered books
 const filteredBooks = computed(() => {
   return books.value.filter((book) => (book.title + " " + book.author).toLowerCase().includes(searchQuery.value.toLowerCase()));
 });
 
-// Fetch books before the component is mounted
 onBeforeMount(fetchBooks);
 </script>
