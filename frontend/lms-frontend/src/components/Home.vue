@@ -15,6 +15,9 @@
     <router-link to="/books">
       <div class="px-7 py-3 rounded-md mx-5 text-gray-600 text-lg font-medium bg-gray-200 hover:bg-gray-400 hover:text-white transition-all duration-150 ease-in-out">booklist</div>
     </router-link>
+    <router-link to="/edit">
+      <div class="px-7 py-3 rounded-md mx-5 text-gray-600 text-lg font-medium bg-gray-200 hover:bg-gray-400 hover:text-white transition-all duration-150 ease-in-out">edit book</div>
+    </router-link>
   </nav>
 </template>
 
