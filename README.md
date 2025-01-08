@@ -3,6 +3,11 @@ There are 2 folders here "backend" and "frontend", with the backend portion cont
 
 Simply clone the repository, and type `npm start` at the root of the repository. You can initialize the backend folder and the frontend folder individually, but I just made a package.json that starts both service concurrently. <br>
 
+In order to run this repo however, you will have to setup a .env file in the root of the repo which contains your **supabase keys and URL** and save them in the following manner
+```
+SUPABASE_URL=<YOUR_URL>
+SUPABASE_KEY=<YOUR_KEY>
+```
 # Tech stack
 **Frontend**: Built with Vue.js and TailwindCSS.<br>
 Displays dynamic lists of books based on their status (available, borrowed, etc.).<br>
