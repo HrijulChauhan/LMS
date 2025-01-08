@@ -64,4 +64,49 @@ router.delete("/:id", async (req, res) => {
   res.status(200).json({ message: "Book deleted successfully", data });
 });
 
+router.post("/borrow/:id", async (req, res) => {
+  const { id } = req.params;
+  const { borrower_name, borrower_id } = req.body;
+
+  if (!borrower_name || !borrower_id) {
+    return res.status(400).json({ error: "Borrower name and ID are required." });
+  }
+
+  const { data, error } = await supabase
+    .from("books")
+    .update({
+      borrowed_by: borrower_name,
+      borrower_id,
+      availability: false,
+    })
+    .eq("id", id);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.status(200).json({ message: "Book borrowed successfully", data });
+});
+
+router.post("/return/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const { data, error } = await supabase
+    .from("books")
+    .update({
+      borrowed_by: null,
+      borrower_id: null,
+      availability: true,
+    })
+    .eq("id", id);
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.status(200).json({ message: "Book returned successfully", data });
+});
+
+
+
 module.exports = router;
