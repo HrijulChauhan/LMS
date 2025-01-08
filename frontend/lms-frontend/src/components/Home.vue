@@ -4,19 +4,15 @@
       Library Management System
     </h1>
   </section>
-
-  <nav class="flex mt-10 justify-center">
-    <router-link to="/">
-      <div class="px-7 py-3 rounded-md mx-5 text-gray-600 text-lg font-medium bg-gray-200 hover:bg-gray-400 hover:text-white transition-all duration-150 ease-in-out">Home</div>
+  <nav class="grid grid-cols-3 h-96 mt-10 border-2">
+    <router-link to="/" class="bg-gray-100 hover:bg-blue-600 hover:text-white transition-all duration-150 ease-in-out flex items-center justify-center">
+      <div class="text-5xl tracking-tighter font-normal">Home</div>
     </router-link>
-    <router-link to="/addbook">
-      <div class="px-7 py-3 rounded-md mx-5 text-gray-600 text-lg font-medium bg-gray-200 hover:bg-gray-400 hover:text-white transition-all duration-150 ease-in-out">Add book</div>
+    <router-link to="/addbook" class="bg-gray-100 hover:bg-emerald-600 hover:text-white transition-all duration-150 ease-in-out flex items-center justify-center border-l-2 border-r-2">
+      <div class="text-5xl tracking-tighter font-normal">Add Book</div>
     </router-link>
-    <router-link to="/books">
-      <div class="px-7 py-3 rounded-md mx-5 text-gray-600 text-lg font-medium bg-gray-200 hover:bg-gray-400 hover:text-white transition-all duration-150 ease-in-out">booklist</div>
-    </router-link>
-    <router-link to="/edit">
-      <div class="px-7 py-3 rounded-md mx-5 text-gray-600 text-lg font-medium bg-gray-200 hover:bg-gray-400 hover:text-white transition-all duration-150 ease-in-out">edit book</div>
+    <router-link to="/edit" class="bg-gray-100 hover:bg-orange-600 hover:text-white transition-all duration-150 ease-in-out flex items-center justify-center">
+      <div class="text-5xl tracking-tighter font-normal">Edit Book</div>
     </router-link>
   </nav>
 </template>

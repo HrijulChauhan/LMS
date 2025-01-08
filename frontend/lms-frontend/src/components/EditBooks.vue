@@ -1,6 +1,23 @@
 <template>
+  <nav class="relative flex items-center px-10 py-5">
+    <router-link to="/" class="flex-shrink-0">
+      <h1 class="text-lg text-gray-600 tracking-tighter font-medium">LMS</h1>
+    </router-link>
+    <h1 class="absolute left-1/2 transform -translate-x-1/2 text-2xl tracking-tight font-medium text-gray-800">Book Search</h1>
+    <section class="ml-auto flex space-x-6 text-base">
+      <router-link to="/">
+        <div>Home</div>
+      </router-link>
+      <router-link to="/addbook">
+        <div>Add Book</div>
+      </router-link>
+      <router-link to="/books">
+        <div>Book List</div>
+      </router-link>
+    </section>
+  </nav>
+
   <div class="p-10">
-    <h1 class="text-2xl font-semibold mb-6">Search and Edit Books</h1>
     <div class="mb-6 flex justify-end">
       <input
         v-model="searchQuery"
@@ -48,6 +65,7 @@
             </select>
           </div>
           <div class="flex justify-end">
+            <button type="button" class="mr-4 px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600" @click="deleteBook">Delete</button>
             <button type="button" class="mr-4 px-3 py-1 bg-gray-300 rounded-md hover:bg-gray-400" @click="cancelEdit">Cancel</button>
             <button type="submit" class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-700">Save</button>
           </div>
@@ -81,7 +99,7 @@ const filteredBooks = computed(() => {
 
 const editBook = (book) => {
   editingBook.value = { ...book };
-  editingBookFlag.value = true; 
+  editingBookFlag.value = true;
 };
 
 const saveBook = async () => {
@@ -91,15 +109,26 @@ const saveBook = async () => {
     await axios.put(`http://localhost:5000/api/books/edit/${editingBook.value.id}`, editingBook.value);
   }
   editingBook.value = null;
-  editingBookFlag.value = false; 
-  console.log(editingBookFlag.value)
+  editingBookFlag.value = false;
 };
 
 const cancelEdit = () => {
   editingBook.value = null;
-  editingBookFlag.value = false; 
+  editingBookFlag.value = false;
 };
 
+const deleteBook = async () => {
+  const id = editingBook.value.id;
+  try {
+    await axios.delete(`http://localhost:5000/api/books/${id}`);
+    fetchBooks();
+    // books.value = books.value.filter((book) => book.id !== id);
+  } catch (err) {
+    console.error("Failed to delete book");
+  }
+  editingBook.value = null;
+  editingBookFlag.value = false;
+};
 
 onBeforeMount(fetchBooks);
 </script>
