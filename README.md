@@ -1,3 +1,8 @@
+# website
+https://lms-frontend-bos2.vercel.app/ <br>
+hosted it online
+ 
+
 # Setup instructions
 There are 2 folders here "backend" and "frontend", with the backend portion containing the API routes (using Supabase as a cloud hosted postgres database) and the frontend portion being written in VueJS. <br>
 
